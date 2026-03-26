@@ -6,7 +6,7 @@ import numpy as np
 # 1. IDENTIFICACIÓN Y SEGURIDAD
 sheet_id = "1d6wWm4k2nFK48OSa8P9-LZ_SnrE6TrzR4eYQtKqpiYo"
 
-# Test
+# Test1
 # DICCIONARIO DE LLAVES (Usted define quién ve qué)
 # La 'llave' es lo que el estudiante escribe, la 'pestaña' es el nombre real en el Excel
 llaves_acceso = {
