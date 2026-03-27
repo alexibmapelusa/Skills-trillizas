@@ -3,6 +3,33 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+# --- INYECCIÓN DE CSS PARA EL BORDE ÉLFICO ---
+import streamlit as st
+import base64
+
+# Función para convertir la imagen del perrito a base64
+def get_base64_of_image(image_path):
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
+
+# Reemplace 'ruta/a/su/imagen_del_perrito.png' con la ruta real en su PC
+img_base64 = get_base64_of_image('F:/Disco Actual/8.EStudiantes/Trillizas/Skills_Final/images/MascotaGabiC1.png')
+
+# CSS Personalizado:
+# 1. Usamos la imagen como un 'border-image' sutil.
+# 2. Creamos una sombra dorada para dar profundidad.
+st.markdown(
+    """
+    <style>
+    /* 1. Fondo limpio y profesional */
+    .stApp { background-color: #f8f9fa; }
+
+    /* 2. Títulos con el color de la identidad élfica */
+    h1, h2, h3 { color: #1a4d2e !important; font-family: 'Georgia', serif; }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 # 1. IDENTIFICACIÓN Y SEGURIDAD
 sheet_id = "1d6wWm4k2nFK48OSa8P9-LZ_SnrE6TrzR4eYQtKqpiYo"
 
@@ -54,15 +81,20 @@ if password in llaves_acceso:
         angulos += angulos[:1]
         
         # 5. GENERACIÓN VISUAL (Gráfica de Rigor)
-        col1, col2 ,col3 = st.columns([2, 1.1 , 0.9])
+        col1, col2  = st.columns([2,0.7])
         # ... (código previo de ángulos y valores)
         
         with col1:
+
          with st.spinner('Calculando métricas de rendimiento...'):
             # Aquí va todo su código de: 
             # fig, ax = plt.subplots...
             # col1.pyplot(fig)
             fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
+            fig.patch.set_alpha(0) 
+            # ESTA ES LA CLAVE: Hacer transparente el fondo de la figura y del eje
+            ax.bar(0, 5, width=2*np.pi, color='#fdf5e6', alpha=1.0, zorder=0)
+            #ax.set_facecolor('none')
             # Definir los radios para las zonas (asumiendo escala de 0 a 5)
             # Zona Roja (0-2), Amarilla (2-4), Verde (4-5), 
             ax.bar(0, 2, width=2*np.pi, color='red', alpha=0.2, zorder=0)
@@ -72,9 +104,9 @@ if password in llaves_acceso:
             # ax.fill(angulos, [5]*len(angulos), color='gray', alpha=0.1) 
 
            # 2. Dibujar el polígono del estudiante
-            ax.plot(angulos, values_me, color='#ff4500', linewidth=3, label='Meta Esperada (ME)', linestyle='--')
-            ax.plot(angulos, valores, color='#0047AB', linewidth=4, label=f'Progreso Actual: {estudiante}')
-            ax.fill(angulos, valores, color='#0047AB', alpha=0.2, zorder=2)
+            ax.plot(angulos, values_me, color='#ff4500', linewidth=5, label='Meta Esperada (ME)', linestyle='--')
+            ax.plot(angulos, valores, color="#001F5B", linewidth=6, label=f'Progreso Actual: {estudiante}')
+            ax.fill(angulos, valores, color='#0047AB', alpha=0.3, zorder=2)
 
             # 3. FIJAR LA ESCALA (Esto evita que el dibujo parezca "máximo" siempre)
             # Si su nota máxima es 5, deje 5. Si es 10, cambie a 10.
@@ -95,30 +127,9 @@ if password in llaves_acceso:
             # Ubicamos la leyenda fuera del gráfico para no obstruir la vista
             ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1))
 
-            st.pyplot(fig)
+            st.pyplot(fig, transparent=True)
     
-    
-
-        with col2:
-            st.write(f"### Detalle de Competencias: {estudiante}")
-            
-            # 6. TABLA COLOREADA (Pandas Styling)
-            df_tabla = df[['Categoria', estudiante]].set_index('Categoria')
-            
-            def semaforo_celda(val):
-                if not isinstance(val, (int, float)): return ''
-                if val >= 4.0: color = '#d4edda' # Verde
-                elif val >= 3.0: color = '#fff3cd' # Amarillo
-                else: color = '#f8d7da' # Rojo
-                return f'background-color: {color}'
-
-            st.dataframe(df_tabla.style.applymap(semaforo_celda), use_container_width=True)
-
-# LÓGICA DE STICKERS MOTIVACIONALES
-# CÁLCULO DE PROMEDIO PARA RECOMPENSA
-      
-
-        with col3: # Lo ponemos en la columna de la tabla para que no estorbe al radar
+        with col2: # Lo ponemos en la columna de la tabla para que no estorbe al radar
             st.write("---") # Una línea divisoria profesional
             promedio = np.mean(valores)
          # --- LÓGICA DE SEGMENTACIÓN ---
@@ -132,49 +143,66 @@ if password in llaves_acceso:
            
             # 1. DEFINICIÓN DE VARIABLES VISUALES
             # Ajustamos el tamaño a 200px para que se vea imponente
-            estilo_base = "width: 200px; height: auto; display: block; margin: auto; padding: 20px; border-radius: 25px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1);"
-# Selección de imagen por Categoría y Desempeño
+            # ESTILO BASE LIMPIO (Solo lo estructural)
+            estilo_base = "display: flex; justify-content: center; align-items: center; margin: auto; padding: 20px; box-shadow: 0px 10px 20px rgba(0,0,0,0.3); overflow: hidden;"
+            # Selección de imagen por Categoría y Desempeño
             if estudiante in colegio:
+                # FORMA: OVALADA (Ancho != Alto, Radio 50%)
+                # CSS para el fondo general del reporte
 
+                   # Fusión en una sola línea de inyección
+                st.markdown('<style>.stApp{background-color:#1a4d2e !important;} h1,h2,h3{color:#d4af37 !important;} div[role="alert"]{font-family:Georgia, serif; color:#228b22 !important; background-color:#fdf5e6 !important; border:2px solid #d4af37 !important;}</style>', unsafe_allow_html=True)
+
+
+                
+                #st.markdown("""<style>.stApp { background-color: #1a4d2e !important; } /* Verde Terciopelo ÉlFico */.main .block-container { background-color: transparent !important; }h1, h2, h3 { color: #d4af37 !important; } /* Títulos en ORO */</style>""", unsafe_allow_html=True)
+                forma_box = "width: 210px; height: 250px; border-radius: 50% / 50%;"
                 if promedio >= 4.0:
                     # EXCELENCIA: Fondo Verde, Sticker 3aa
-                    color_bg = "#12d43f" # Verde intenso 
-                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabiA.png"
+                    color_bg = "#a36a14" # Dorado
+                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabiA1.png"
 
                     #st.markdown("<h1 style='text-align: center;'>☀️</h1>", unsafe_allow_html=True)
-                    st.markdown(f'<div style="background-color: {color_bg}; {estilo_base}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
-                    st.success("🎉 ¡Nivel Leyenda Alcanzado! ¡Continúa así!")
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
+                        <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #cf1515) drop-shadow(0px 0px 10px #cf1515); 
+                        /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
+                    st.info("🎉 ¡Nivel Leyenda Alcanzado! ¡Continúa así!")
                     st.toast("¡Sigue así! ¡Vas muy bien!", icon="☀️")
                     st.balloons() # Efecto de celebración para el máximo puntaje
                 
                 elif promedio >= 3.1:
                     # PROGRESO: Fondo Amarillo, Sticker 3bb
-                    color_bg = "#e9c656" # Amarillo dorado
-                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabiB.png"
+                    color_bg = "#170696" # Azul-Indigo
+                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabiB1.png"
                 
-                    st.markdown(f'<div style="background-color: {color_bg}; {estilo_base}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
+                        <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d4af37) drop-shadow(0px 0px 10px #d4af37); 
+                        /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
                     st.info("👍 Buen progreso. Hay que ajustar detalles...")
                     st.toast("¡Vas por muy buen camino!", icon="⭐")
                
                 else:
                     # DESAFÍO: Fondo Rojo, Sticker 3cc
-                    color_bg = "#015acf" # Azul oscuro suave
+                    color_bg = "#000000" # Negro
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabiC1.png"
 
-                    #st.markdown("<h1 style='text-align: center;'>🌧️</h1>", unsafe_allow_html=True)
-                    st.markdown(f'<div style="background-color: {color_bg}; {estilo_base}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
-                    st.warning("¡Es momento de apretar tuercas! ⚙️⚙️")
+                    # El estilo inline con el filtro de silueta
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
+                        <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d4af37) drop-shadow(0px 0px 10px #d4af37); 
+                        /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
+                    st.info("¡Es momento de apretar tuercas! ⚙️⚙️")
                     st.toast("¡A ponernos las pilas!", icon="🔋")
-                    st.snow() # <--- Efecto de nieve cayendo
+                    
             
             elif estudiante in universidad:
-
+                # FORMA:CUADRADO TÉCNICO
+                forma_box = "width: 200px; height: 200px; border-radius: 15px;"
                 # Aquí debe subir imágenes más sobrias (ej: un logo de átomo, un búho o un sello)
                 if promedio >= 4.2: 
                     color_bg = "#cf8c0e" # Dorado intenso
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/TrofeoA.png"
                     
-                    st.markdown(f'<div style="background-color: {color_bg}; {estilo_base}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
+                    st.markdown(f'<div style="background-color: {color_bg}; {forma_box}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
                     st.success("Bien hecho 🎓📚")
                     st.toast("¡Vamos bien!", icon="🏆")
              
@@ -182,7 +210,7 @@ if password in llaves_acceso:
                     color_bg = "#97c5fa" # Azul cielo claro
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/TrofeoB.png"
                     
-                    st.markdown(f'<div style="background-color: {color_bg}; {estilo_base}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
+                    st.markdown(f'<div style="background-color: {color_bg}; {forma_box}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
                     st.info("Buen progreso. ¡Hay que ajustar detalles...! 📜🖋️")
                     st.toast(" Vamos mejorando", icon="👍")
 
@@ -191,18 +219,19 @@ if password in llaves_acceso:
                     color_bg = "#e8f4f8" # Azul académico sobrio
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/TrofeoC.png"
                     
-                    st.markdown(f'<div style="background-color: {color_bg}; {estilo_base}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
+                    st.markdown(f'<div style="background-color: {color_bg}; {forma_box}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
                     st.warning("Hay que acelerar... 🔍📚")
                     st.toast("¡A ponernos las pilas!", icon="🔋")
 
             elif estudiante in entrenamiento:
-
+                # FORMA: REDONDA PERFECTA (Ancho == Alto, Radio 50%)
+                forma_box = "width: 200px; height: 200px; border-radius: 50%;"
                 # Imágenes de calistenia/gimnasia (ej: una barra o una silueta de parada de manos)
                 if promedio >= 4.2:
                     color_bg = "#cf5015" # Naranja intenso
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Gym_BaseA1.png"
                     
-                    st.markdown(f'<div style="background-color: {color_bg}; {estilo_base}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
+                    st.markdown(f'<div style="background-color: {color_bg}; {forma_box}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
                     st.success("Excelente ... 🤸‍♂️🥋")
                     st.toast("¡Bien hecho!", icon="🥇")
                     
@@ -210,7 +239,7 @@ if password in llaves_acceso:
                     color_bg = "#aee646" # Verde lima
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Gym_BaseB1.png"
                     
-                    st.markdown(f'<div style="background-color: {color_bg}; {estilo_base}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
+                    st.markdown(f'<div style="background-color: {color_bg}; {forma_box}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
                     st.info("Vamos mejorando... 💪🧱")
                     st.toast("Buen progreso. ¡Hay que ajustar detalles...!",icon="🥈")
 
@@ -219,7 +248,7 @@ if password in llaves_acceso:
                     color_bg = "#7de4b4" # Verde Biche
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Gym_BaseC1.png"
                     
-                    st.markdown(f'<div style="background-color: {color_bg}; {estilo_base}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
+                    st.markdown(f'<div style="background-color: {color_bg}; {forma_box}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
                     st.warning("Ya vamos dando... 🧘‍♀️⏳")
                     st.toast("Medallita",icon="🥉")
 
@@ -228,6 +257,44 @@ if password in llaves_acceso:
                 url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MagusOne.png"
                 st.markdown(f'<div style="background-color: {color_bg}; {estilo_base}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
                 st.info("Reporte de Actividad")
+            
+           
+
+            # 6. TABLA COLOREADA (Pandas Styling)
+            st.write(f"### Detalle de Competencias: {estudiante}")
+            df_tabla = df[['Categoria', estudiante]]
+            
+            def estilo_categoria(val):
+                return 'background-color: #fdf5e6; color: #5a3e1b; font-family: Georgia;'
+            def semaforo_celda(val):
+                #estilo_base = 'font-family: Georgia; color: #fdf5e6; background-color: transparent;'
+                if not isinstance(val, (int, float)): 
+                    return 'font-family: Georgia; color: #383d41; background-color: #edd19d;'  # Gris
+                if val >= 4.0: 
+                    color = '#d4edda' # Verde
+                elif val >= 3.0: 
+                    color = '#fff3cd' # Amarillo
+                else: 
+                    color = "#f8d7da" # Rojo
+                return f'font-family: Georgia; color: #1a4d2e; background-color: {color};'
+            
+            # 2. El dataframe original con su semáforo básico
+            #st.dataframe(df_tabla.style.applymap(semaforo_celda), use_container_width=True)
+            
+            
+            styled_df = (df_tabla.style.applymap(estilo_categoria, subset=['Categoria']).applymap(semaforo_celda, subset=[estudiante]))
+
+            #st.markdown(styled_df.to_html(), unsafe_allow_html=True)
+            #st.dataframe(styled_df, use_container_width=True)
+            st.dataframe(styled_df, styled_df.hide(axis="index"),use_container_width=True)
+            
+            
+
+# LÓGICA DE STICKERS MOTIVACIONALES
+# CÁLCULO DE PROMEDIO PARA RECOMPENSA
+      
+
+
             
 
     except Exception as e:
