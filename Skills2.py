@@ -159,7 +159,7 @@ if password in llaves_acceso:
                 else:
                     # DESAFÍO: Fondo Rojo, Sticker 3cc
                     color_bg = "#015acf" # Azul oscuro suave
-                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabiC.png"
+                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabiC1.png"
 
                     #st.markdown("<h1 style='text-align: center;'>🌧️</h1>", unsafe_allow_html=True)
                     st.markdown(f'<div style="background-color: {color_bg}; {estilo_base}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
