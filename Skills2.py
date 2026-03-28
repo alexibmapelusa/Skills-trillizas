@@ -219,7 +219,7 @@ if password in llaves_acceso:
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabi1A.png"
 
                     st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
-                        <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #1a4d2e) drop-shadow(0px 0px 10px #1ff0ec); 
+                        <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #1a4d2e) drop-shadow(0px 0px 10px #1a4d2e); 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
                     st.info(" ☀️ ¡Nivel A: nivel leyenda alcanzado! ¡Continúa así!")
                     st.toast("¡Sigue así! ¡Vas muy bien!", icon="🎉")
