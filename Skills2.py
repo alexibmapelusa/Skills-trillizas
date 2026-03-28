@@ -185,7 +185,7 @@ if password in llaves_acceso:
             ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1))
 
             st.pyplot(fig, transparent=True)
-    
+            
         with col2: # Lo ponemos en la columna de la tabla para que no estorbe al radar
             st.write("---") # Una línea divisoria profesional
             # CÁLCULO DE PROMEDIO PARA RECOMPENSA 
@@ -222,6 +222,7 @@ if password in llaves_acceso:
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #1a4d2e) drop-shadow(0px 0px 10px #1a4d2e); 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
                     st.info(" ☀️ ¡Nivel A: nivel leyenda alcanzado! ¡Continúa así!")
+                    st.link_button("🚀 ¡Practica 1 minuto en ThatQuiz!", "https://www.thatquiz.org/es/")
                     st.toast("¡Sigue así! ¡Vas muy bien!", icon="🎉")
                     st.balloons() # Efecto de celebración para el máximo puntaje
                 
@@ -233,7 +234,8 @@ if password in llaves_acceso:
                     st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d6e629) drop-shadow(0px 0px 10px #d6e629); 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
-                    st.info("⭐⭐ Nivel B: Buen progreso. Hay que ajustar detalles...")
+                    st.info("⭐⭐ Nivel B: Buen progreso. Hay que ajustar detalles...¡Practica 3 minutos en ThatQuiz! 🚀")
+                    st.link_button("🚀 ¡Ir a ThatQuiz!", "https://www.thatquiz.org/es/")
                     st.toast("¡Vas por muy buen camino!", icon="💪")
 
                 elif promedio >= 3.0:
@@ -244,7 +246,8 @@ if password in llaves_acceso:
                     st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #e6a029) drop-shadow(0px 0px 10px #e6a029); 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
-                    st.info("⭐ Nivel C: Vamos progresando pero hay que ajustar detalles...")
+                    st.info("⭐ Nivel C: Vamos progresando pero hay que ajustar detalles...¡Practica 5 minutos en ThatQuiz! 🚀")
+                    st.link_button("🚀 ¡Ir a ThatQuiz!", "https://www.thatquiz.org/es/")
                     st.toast("¡Vamos mejorando!", icon="👍")
                
                 else:
@@ -256,7 +259,8 @@ if password in llaves_acceso:
                     st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d12f0f) drop-shadow(0px 0px 10px #d12f0f; 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
-                    st.info("⚙️⚙️ Nivel D: ¡Es momento de apretar tuercas! ")
+                    st.info("⚙️⚙️ Nivel D: ¡Es momento de apretar tuercas!¡Practica 5 minutos en ThatQuiz! 🚀 ")
+                    st.link_button("🚀 ¡Ir a ThatQuiz!", "https://www.thatquiz.org/es/")
                     st.toast("¡A ponernos las pilas!", icon="🔋")
 
             elif estudiante in entrenamiento:
@@ -366,19 +370,20 @@ if password in llaves_acceso:
                 return f'font-family: Georgia; color: #1a4d2e; background-color: {color};'
             
            
-            # 2. En la parte donde renderiza la interfaz (donde ya tiene la variable 'estudiante_seleccionado')
-            try:
-                pdf_bytes = generar_reporte_maestro(estudiante, tipo_actual, df_tabla, df_glosario)
-                st.download_button(label=f"📥 Descargar Reporte de Nivel: {estudiante}",data=pdf_bytes,file_name=f"Reporte_{estudiante}_Marzo.pdf",
-                mime="application/pdf")
-            except Exception as e:
-                st.error(f"Asegúrese de que el nombre coincide con la columna: {e}")
+
 
             
             # 2. El dataframe original con su semáforo básico
             styled_df = (df_tabla.style.applymap(estilo_categoria, subset=['Categoria']).applymap(semaforo_celda, subset=[estudiante]))
             st.dataframe(styled_df, styled_df.hide(axis="index"),use_container_width=True)
  
+             # 2. En la parte donde renderiza la interfaz (donde ya tiene la variable 'estudiante_seleccionado')
+            try:
+                pdf_bytes = generar_reporte_maestro(estudiante, tipo_actual, df_tabla, df_glosario)
+                st.download_button(label=f"📥 Descargar Reporte de Nivel: {estudiante}",data=pdf_bytes,file_name=f"Reporte_{estudiante}_Marzo.pdf",
+                mime="application/pdf")
+            except Exception as e:
+                st.error(f"Asegúrese de que el nombre coincide con la columna: {e}")
 
     except Exception as e:
         st.error(f"Falla técnica en la lectura de la pestaña '{pestaña_autorizada}': {e}")
