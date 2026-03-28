@@ -13,23 +13,13 @@ def get_base64_of_image(image_path):
         return base64.b64encode(img_file.read()).decode()
 
 # Reemplace 'ruta/a/su/imagen_del_perrito.png' con la ruta real en su PC
-img_base64 = get_base64_of_image('F:/Disco Actual/8.EStudiantes/Trillizas/Skills_Final/images/MascotaGabiC1.png')
+#img_base64 = get_base64_of_image('F:/Disco Actual/8.EStudiantes/Trillizas/Skills_Final/images/MascotaGabiC1.png')
 
 # CSS Personalizado:
 # 1. Usamos la imagen como un 'border-image' sutil.
 # 2. Creamos una sombra dorada para dar profundidad.
-st.markdown(
-    """
-    <style>
-    /* 1. Fondo limpio y profesional */
-    .stApp { background-color: #f8f9fa; }
-
-    /* 2. Títulos con el color de la identidad élfica */
-    h1, h2, h3 { color: #1a4d2e !important; font-family: 'Georgia', serif; }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown("""<style>/* 1. Fondo limpio y profesional */.stApp { background-color: #f8f9fa; }/* 2. Títulos con el color de la identidad élfica */ 
+            h1, h2, h3 { color: #1a4d2e !important; font-family: 'Georgia', serif; }</style>""",unsafe_allow_html=True)
 # 1. IDENTIFICACIÓN Y SEGURIDAD
 sheet_id = "1d6wWm4k2nFK48OSa8P9-LZ_SnrE6TrzR4eYQtKqpiYo"
 
@@ -139,7 +129,7 @@ if password in llaves_acceso:
             entrenamiento = ["Alejandro", "Zahir", "Farid"] # Ajuste según sus nombres en el Excel
             
             # URL Base de su GitHub
-            base_url = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/"
+           #base_url = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/"
            
             # 1. DEFINICIÓN DE VARIABLES VISUALES
             # Ajustamos el tamaño a 200px para que se vea imponente
@@ -149,54 +139,51 @@ if password in llaves_acceso:
             if estudiante in colegio:
                 # FORMA: OVALADA (Ancho != Alto, Radio 50%)
                 # CSS para el fondo general del reporte
-
                    # Fusión en una sola línea de inyección
                 st.markdown('<style>.stApp{background-color:#1a4d2e !important;} h1,h2,h3{color:#d4af37 !important;} div[role="alert"]{font-family:Georgia, serif; color:#228b22 !important; background-color:#fdf5e6 !important; border:2px solid #d4af37 !important;}</style>', unsafe_allow_html=True)
-
-
-                
-                #st.markdown("""<style>.stApp { background-color: #1a4d2e !important; } /* Verde Terciopelo ÉlFico */.main .block-container { background-color: transparent !important; }h1, h2, h3 { color: #d4af37 !important; } /* Títulos en ORO */</style>""", unsafe_allow_html=True)
                 forma_box = "width: 210px; height: 250px; border-radius: 50% / 50%;"
+
                 if promedio >= 4.0:
                     # EXCELENCIA: Fondo Verde, Sticker 3aa
-                    color_bg = "#a36a14" # Dorado
-                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabiA1.png"
+                    color_bg = "#000000" # Negro
+                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabi1A.png"
 
                     #st.markdown("<h1 style='text-align: center;'>☀️</h1>", unsafe_allow_html=True)
                     st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
-                        <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #cf1515) drop-shadow(0px 0px 10px #cf1515); 
+                        <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #e6a029) drop-shadow(0px 0px 10px #e6a029); 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
-                    st.info("🎉 ¡Nivel Leyenda Alcanzado! ¡Continúa así!")
-                    st.toast("¡Sigue así! ¡Vas muy bien!", icon="☀️")
+                    st.info(" ☀️ ¡Nivel Leyenda Alcanzado! ¡Continúa así!")
+                    st.toast("¡Sigue así! ¡Vas muy bien!", icon="🎉")
                     st.balloons() # Efecto de celebración para el máximo puntaje
                 
                 elif promedio >= 3.1:
                     # PROGRESO: Fondo Amarillo, Sticker 3bb
-                    color_bg = "#170696" # Azul-Indigo
-                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabiB1.png"
+                    color_bg = "#000000" # Negro
+                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabi1B.png"
                 
                     st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d4af37) drop-shadow(0px 0px 10px #d4af37); 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
-                    st.info("👍 Buen progreso. Hay que ajustar detalles...")
-                    st.toast("¡Vas por muy buen camino!", icon="⭐")
+                    st.info("⭐⭐ Buen progreso. Hay que ajustar detalles...")
+                    st.toast("¡Vas por muy buen camino!", icon="👍")
                
                 else:
                     # DESAFÍO: Fondo Rojo, Sticker 3cc
                     color_bg = "#000000" # Negro
-                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabiC1.png"
+                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabi1C.png"
 
                     # El estilo inline con el filtro de silueta
                     st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
-                        <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d4af37) drop-shadow(0px 0px 10px #d4af37); 
+                        <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d4af37) drop-shadow(0px 0px 10px #1ff0ec); 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
-                    st.info("¡Es momento de apretar tuercas! ⚙️⚙️")
+                    st.info("⚙️⚙️ ¡Es momento de apretar tuercas! ")
                     st.toast("¡A ponernos las pilas!", icon="🔋")
                     
             
             elif estudiante in universidad:
                 # FORMA:CUADRADO TÉCNICO
                 forma_box = "width: 200px; height: 200px; border-radius: 15px;"
+
                 # Aquí debe subir imágenes más sobrias (ej: un logo de átomo, un búho o un sello)
                 if promedio >= 4.2: 
                     color_bg = "#cf8c0e" # Dorado intenso
@@ -215,7 +202,6 @@ if password in llaves_acceso:
                     st.toast(" Vamos mejorando", icon="👍")
 
                 else:
-                    
                     color_bg = "#e8f4f8" # Azul académico sobrio
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/TrofeoC.png"
                     
@@ -244,7 +230,6 @@ if password in llaves_acceso:
                     st.toast("Buen progreso. ¡Hay que ajustar detalles...!",icon="🥈")
 
                 else: 
-                    
                     color_bg = "#7de4b4" # Verde Biche
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Gym_BaseC1.png"
                     
