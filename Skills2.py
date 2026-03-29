@@ -241,7 +241,7 @@ if password in llaves_acceso:
             if estudiante in colegio:
                 tipo_actual = "Colegio"
                 # FORMA: OVALADA (Ancho != Alto, Radio 50%)
-                forma_box = "width: 210px; height: 250px; border-radius: 50% / 50%;"
+                forma_box = "width: 147px; height: 175px; border-radius: 50% / 50%;"
                 # CSS para el fondo general del reporte
                 # Fusión en una sola línea de inyección
                 st.markdown('<style>.stApp{background-color:#1a4d2e !important;} h1,h2,h3{color:#d4af37 !important;} div[role="alert"]{font-family:Georgia, serif; color:#228b22 !important; background-color:#fdf5e6 !important; border:2px solid #d4af37 !important;}</style>', unsafe_allow_html=True)
