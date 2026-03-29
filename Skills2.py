@@ -213,7 +213,8 @@ if password in llaves_acceso:
             ax.grid(True, linestyle='--', alpha=0.6)
             # 5. ACTIVACIÓN DE LEYENDAS (Lo que faltaba)
             # Ubicamos la leyenda fuera del gráfico para no obstruir la vista
-            ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1))
+            #ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1))
+            ax.legend(loc='lower left', bbox_to_anchor=(-0.3, -0.1), fontsize=9, frameon=True)
 
             st.pyplot(fig, transparent=True)
             
@@ -233,7 +234,9 @@ if password in llaves_acceso:
             # 1. DEFINICIÓN DE VARIABLES VISUALES
             # Ajustamos el tamaño a 200px para que se vea imponente
             # ESTILO BASE LIMPIO (Solo lo estructural)
-            estilo_base = "display: flex; justify-content: center; align-items: center; margin: auto; padding: 20px; box-shadow: 0px 10px 20px rgba(0,0,0,0.3); overflow: hidden;"
+            #estilo_base = "display: flex; justify-content: center; align-items: center; margin: auto; padding: 20px; box-shadow: 0px 10px 20px rgba(0,0,0,0.3); overflow: hidden;"
+            estilo_ajustado = f"display: flex; justify-content: center; align-items: center; margin: -50px 0px 10px 40px; padding: 20px; box-shadow: 0px 10px 20px rgba(0,0,0,0.3); overflow: hidden;"
+            margin_ajuste = "margin: -60px 0px 10px 50px;" # Subir 60px y mover 50px a la derecha
             # Selección de imagen por Categoría y Desempeño
             if estudiante in colegio:
                 tipo_actual = "Colegio"
@@ -248,8 +251,8 @@ if password in llaves_acceso:
                     # EXCELENCIA: Fondo Verde, Sticker 3aa
                     color_bg = "#000000" # Negro
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabi1A.png"
-
-                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
+                    
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} {margin_ajuste} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #1a4d2e) drop-shadow(0px 0px 10px #1a4d2e); 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
                     st.info(" ☀️ ¡Nivel A: nivel leyenda alcanzado! ¡Continúa así!")
@@ -262,7 +265,7 @@ if password in llaves_acceso:
                     color_bg = "#000000" # Negro
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabi1B.png"
                 
-                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} {margin_ajuste} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d6e629) drop-shadow(0px 0px 10px #d6e629); 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
                     st.info("⭐⭐ Nivel B: Buen progreso. Hay que ajustar detalles...¡Practica 3 minutos diarios! 🚀")
@@ -274,7 +277,7 @@ if password in llaves_acceso:
                     color_bg = "#000000" # Negro
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabi1C.png"
                 
-                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} {margin_ajuste} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #e6a029) drop-shadow(0px 0px 10px #e6a029); 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
                     st.info("⭐ Nivel C: Vamos progresando pero hay que ajustar detalles...¡Practica 5 minutos diarios! 🚀")
@@ -288,7 +291,7 @@ if password in llaves_acceso:
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MascotaGabi1D.png"
 
                     # El estilo inline con el filtro de silueta
-                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} {margin_ajuste} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d12f0f) drop-shadow(0px 0px 10px #d12f0f; 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
                     st.info("⚙️⚙️ Nivel D: ¡Es momento de apretar tuercas!¡Practica 7 minutos diarios! 🚀 ")
@@ -308,7 +311,7 @@ if password in llaves_acceso:
                 if promedio >= 4.1:
                     color_bg = "#3210F0" # Cielo Intenso
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Gohan_DragonBall_1A.png"
-                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 90%; width: auto;filter: drop-shadow(0px 0px 10px #b5f5f7) drop-shadow(0px 0px 10px #b5f5f7) contrast(1.2);
                         /* Efecto de Aura de Energía para Entrenamiento */"></div>""",unsafe_allow_html=True)
                     st.info("🥇 Nivel A: ¡ Excelente ! 🤸‍♂️")
@@ -317,7 +320,7 @@ if password in llaves_acceso:
                 elif promedio >= 3.2: 
                     color_bg = "#3210F0" # Cielo Intenso
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Krilin_DragonBall_1B.png"
-                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 105%; width: auto;filter: drop-shadow(0px 0px 25px #b5f5f7) drop-shadow(0px 0px 25px #b5f5f7) contrast(1.2);
                         /* Efecto de Aura de Energía para Entrenamiento */"></div>""",unsafe_allow_html=True)
                     st.info("🥈 Nivel B: Vamos mejorando... 💪")
@@ -326,7 +329,7 @@ if password in llaves_acceso:
                 elif promedio >= 2.5: 
                     color_bg = "#C9FAFC" # Cielo suave
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Yajirobe_DragonBall_1C.png"
-                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 105%; width: auto;filter: drop-shadow(0px 0px 5px #c6f7f7) drop-shadow(0px 0px 35px #c6f7f7) contrast(1.2);
                         /* Efecto de Aura de Energía para Entrenamiento */"></div>""",unsafe_allow_html=True)
                     st.info("Nivel C: Medallita 🥉 porque ya vamos dando.. 🧘‍♀️")
@@ -335,7 +338,7 @@ if password in llaves_acceso:
                 else: 
                     color_bg = "#C9FAFC" # Cielo suave
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Oolong_Dragon_Ball_1D.png"
-                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 95%; width: auto;filter: drop-shadow(0px 0px 5px #c6f7f7) drop-shadow(0px 0px 35px #c6f7f7) contrast(1.2);
                         /* Efecto de Aura de Energía para Entrenamiento */"></div>""",unsafe_allow_html=True)
                     st.info("Nivel D: Sin medallitas...solo pastillas 💊💊 a ver si mejoramos...")
@@ -379,7 +382,7 @@ if password in llaves_acceso:
             else:
                 color_bg = "#ffffff"
                 url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MagusOne.png"
-                st.markdown(f'<div style="background-color: {color_bg}; {estilo_base}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
+                st.markdown(f'<div style="background-color: {color_bg}; {estilo_ajustado}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
                 st.info("Reporte de Actividad")
             
            
