@@ -70,6 +70,37 @@ def generar_reporte_maestro(nombre_estudiante, tipo_cliente, df_notas, df_glosar
         pdf.multi_cell(0, 5, logro, 0, 'L')
         pdf.ln(3)
 
+        pdf.multi_cell(0, 5, logro, 0, 'L')
+        pdf.ln(3)
+
+    # --- NUEVO BLOQUE DE FIRMA Y CONTACTO ---
+    pdf.set_y(-40) # Se ubica a 40mm del final de la página
+    pdf.set_draw_color(*rgb_tit) 
+    pdf.line(10, pdf.get_y(), 200, pdf.get_y()) # Línea divisoria
+    pdf.ln(4)
+
+    # A. IMAGEN DEL MAGUITO (Pequeña)
+    url_mago = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MagusOne1.png"
+    try:
+        pdf.image(url_mago, x=10, y=pdf.get_y(), w=15) # w=15 la hace bien pequeña
+    except:
+        pass
+
+    # B. DATOS DEL MENTOR
+    pdf.set_x(30) # Espacio para que no se encime con el mago
+    pdf.set_font(estilo["font"], 'B', 10)
+    pdf.set_text_color(*rgb_tit)
+    pdf.cell(0, 5, "ALEXANDER BARRAZA", 0, 1, 'L')
+    
+    pdf.set_x(30)
+    pdf.set_font(estilo["font"], '', 8)
+    pdf.set_text_color(255, 255, 255)
+    pdf.cell(0, 4, "Físico Profesional | Mentoría Internacional", 0, 1, 'L')
+    
+    pdf.set_x(30)
+    pdf.set_text_color(173, 216, 230) # Azul claro sutil
+    pdf.cell(0, 4, "Contacto WhatsApp: +57 3164880199", 0, 1, 'L') 
+
     # 5. SALIDA DE DATOS (CRÍTICO PARA QUE NO SALGA EN BLANCO)
     # Generamos los bytes y forzamos la codificación correcta para Streamlit
     try:
@@ -234,8 +265,8 @@ if password in llaves_acceso:
                     st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d6e629) drop-shadow(0px 0px 10px #d6e629); 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
-                    st.info("⭐⭐ Nivel B: Buen progreso. Hay que ajustar detalles...¡Practica 3 minutos en ThatQuiz! 🚀")
-                    st.link_button("🚀 ¡Ir a ThatQuiz!", "https://www.thatquiz.org/es/")
+                    st.info("⭐⭐ Nivel B: Buen progreso. Hay que ajustar detalles...¡Practica 3 minutos diarios! 🚀")
+                    st.link_button("🚀 ¡Dale 3 minutos a ThatQuiz!", "https://www.thatquiz.org/es/")
                     st.toast("¡Vas por muy buen camino!", icon="💪")
 
                 elif promedio >= 3.0:
@@ -246,8 +277,9 @@ if password in llaves_acceso:
                     st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #e6a029) drop-shadow(0px 0px 10px #e6a029); 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
-                    st.info("⭐ Nivel C: Vamos progresando pero hay que ajustar detalles...¡Practica 5 minutos en ThatQuiz! 🚀")
-                    st.link_button("🚀 ¡Ir a ThatQuiz!", "https://www.thatquiz.org/es/")
+                    st.info("⭐ Nivel C: Vamos progresando pero hay que ajustar detalles...¡Practica 5 minutos diarios! 🚀")
+                    st.link_button("🚀 ¡Dale 3 minutos a ThatQuiz!", "https://www.thatquiz.org/es/")
+                    st.link_button("🚀 ¡Dale 2 minutos a phet.colorado.edu!", "https://phet.colorado.edu/sims/cheerpj/rotation/latest/rotation.html?simulation=rotation&locale=es")
                     st.toast("¡Vamos mejorando!", icon="👍")
                
                 else:
@@ -259,8 +291,9 @@ if password in llaves_acceso:
                     st.markdown(f"""<div style="background-color: {color_bg}; {estilo_base} {forma_box} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d12f0f) drop-shadow(0px 0px 10px #d12f0f; 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
-                    st.info("⚙️⚙️ Nivel D: ¡Es momento de apretar tuercas!¡Practica 5 minutos en ThatQuiz! 🚀 ")
-                    st.link_button("🚀 ¡Ir a ThatQuiz!", "https://www.thatquiz.org/es/")
+                    st.info("⚙️⚙️ Nivel D: ¡Es momento de apretar tuercas!¡Practica 7 minutos diarios! 🚀 ")
+                    st.link_button("🚀 ¡Dale 5 minutos a ThatQuiz!", "https://www.thatquiz.org/es/")
+                    st.link_button("🚀 ¡Dale 2 minutos a phet.colorado.edu!", "https://phet.colorado.edu/sims/cheerpj/rotation/latest/rotation.html?simulation=rotation&locale=es")
                     st.toast("¡A ponernos las pilas!", icon="🔋")
 
             elif estudiante in entrenamiento:
@@ -384,6 +417,22 @@ if password in llaves_acceso:
                 mime="application/pdf")
             except Exception as e:
                 st.error(f"Asegúrese de que el nombre coincide con la columna: {e}")
+
+            # 1. Lea el archivo (solo una vez)
+            try:
+                NAME = "CLASES_FEB_MAR_2026.pdf"
+                with open(NAME, "rb") as f:
+                    datos_pdf = f.read()
+
+            # 2. Cree el botón de descarga
+                st.download_button(
+                    label="📄"+NAME,
+                    data=datos_pdf,
+                    file_name=NAME,
+                    mime="application/pdf"
+                    )
+            except FileNotFoundError:
+                st.warning("Suba el PDF al repositorio para habilitar la descarga.")        
 
     except Exception as e:
         st.error(f"Falla técnica en la lectura de la pestaña '{pestaña_autorizada}': {e}")
