@@ -236,7 +236,7 @@ if password in llaves_acceso:
             # ESTILO BASE LIMPIO (Solo lo estructural)
             #estilo_base = "display: flex; justify-content: center; align-items: center; margin: auto; padding: 20px; box-shadow: 0px 10px 20px rgba(0,0,0,0.3); overflow: hidden;"
             estilo_ajustado = f"display: flex; justify-content: center; align-items: center; margin: -50px 0px 10px 40px; padding: 20px; box-shadow: 0px 10px 20px rgba(0,0,0,0.3); overflow: hidden;"
-            margin_ajuste = "margin: -60px 0px 10px 50px;" # Subir 60px y mover 50px a la derecha
+            margin_ajuste = "margin: -70px 0px 10px 100px;" # Subir 60px y mover 50px a la derecha
             # Selección de imagen por Categoría y Desempeño
             if estudiante in colegio:
                 tipo_actual = "Colegio"
@@ -281,8 +281,8 @@ if password in llaves_acceso:
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #e6a029) drop-shadow(0px 0px 10px #e6a029); 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
                     st.info("⭐ Nivel C: Vamos progresando pero hay que ajustar detalles...¡Practica 5 minutos diarios! 🚀")
-                    st.link_button("🚀 ¡Dale 3 minutos a ThatQuiz!", "https://www.thatquiz.org/es/")
                     st.link_button("🚀 ¡Dale 2 minutos a phet.colorado.edu!", "https://phet.colorado.edu/sims/cheerpj/rotation/latest/rotation.html?simulation=rotation&locale=es")
+                    st.link_button("🚀 ¡Dale 3 minutos a ThatQuiz!", "https://www.thatquiz.org/es/")
                     st.toast("¡Vamos mejorando!", icon="👍")
                
                 else:
@@ -295,8 +295,8 @@ if password in llaves_acceso:
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d12f0f) drop-shadow(0px 0px 10px #d12f0f; 
                         /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
                     st.info("⚙️⚙️ Nivel D: ¡Es momento de apretar tuercas!¡Practica 7 minutos diarios! 🚀 ")
-                    st.link_button("🚀 ¡Dale 5 minutos a ThatQuiz!", "https://www.thatquiz.org/es/")
                     st.link_button("🚀 ¡Dale 2 minutos a phet.colorado.edu!", "https://phet.colorado.edu/sims/cheerpj/rotation/latest/rotation.html?simulation=rotation&locale=es")
+                    st.link_button("🚀 ¡Dale 5 minutos a ThatQuiz!", "https://www.thatquiz.org/es/")
                     st.toast("¡A ponernos las pilas!", icon="🔋")
 
             elif estudiante in entrenamiento:
