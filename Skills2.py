@@ -80,7 +80,7 @@ def generar_reporte_maestro(nombre_estudiante, tipo_cliente, df_notas, df_glosar
     pdf.ln(4)
 
     # A. IMAGEN DEL MAGUITO (Pequeña)
-    url_mago = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MagusOne1.png"
+    url_mago = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MagusOne.png"
     try:
         pdf.image(url_mago, x=10, y=pdf.get_y(), w=15) # w=15 la hace bien pequeña
     except:
