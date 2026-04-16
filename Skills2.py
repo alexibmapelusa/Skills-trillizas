@@ -416,7 +416,7 @@ if password in llaves_acceso:
 
             
             # 2. El dataframe original con su semáforo básico
-            styled_df = (df_tabla.style.applymap(estilo_categoria, subset=['Categoria']).applymap(semaforo_celda, subset=[estudiante]))
+            styled_df = (df_tabla.style.map(estilo_categoria, subset=['Categoria']).map(semaforo_celda, subset=[estudiante]))
             st.dataframe(styled_df, styled_df.hide(axis="index"),use_container_width=True)
  
              # 2. En la parte donde renderiza la interfaz (donde ya tiene la variable 'estudiante_seleccionado')
