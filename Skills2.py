@@ -49,14 +49,37 @@ def generar_reporte_maestro(nombre_estudiante, tipo_cliente, df_notas, df_glosar
         # Tomamos los datos DIRECTO del DataFrame para evitar errores de variables previas
         materia = str(row['Categoria']).upper()
         nota_valor = int(row[nombre_estudiante])
+       # Normalizamos la búsqueda: quitamos espacios, puntos y pasamos a mayúsculas
+        materia_search = str(row['Categoria']).strip().upper()
         
-        # Búsqueda en Glosario
-        filtro = df_glosario[(df_glosario['Categoria'] == row['Categoria']) & 
-                             (df_glosario['Tipo_Cliente'] == tipo_cliente) & 
-                             (df_glosario['Nivel'] == nota_valor)]
+        # Filtro ultra-flexible
+        filtro = df_glosario[
+            (df_glosario['Categoria'].str.upper().str.contains(materia_search[:20], na=False)) & 
+            (df_glosario['Tipo_Cliente'] == tipo_cliente) & 
+            (df_glosario['Nivel'].astype(str) == str(nota_valor))
+        ]
         
-        estado = filtro['Estatus'].values[0] if not filtro.empty else "N/A"
-        logro = filtro['Descripción_Logro'].values[0] if not filtro.empty else "Evaluación técnica en proceso."
+        if not filtro.empty:
+            estado = filtro['Estatus'].values[0]
+            logro = filtro['Descripción_Logro'].values[0]
+        else:
+            # Esto le dirá en la terminal de VS Code exactamente qué está fallando
+            print(f"DEBUG LOCAL -> No hallado: {materia_search[:20]} | Nivel: {nota_valor} | Cliente: {tipo_cliente}")
+            estado = "N/A"
+            logro = "Evaluación técnica en proceso."
+        
+        # Si hay más de un resultado (porque hay misma materia en Colegio y Universidad), 
+        # ahí sí filtramos por tipo_cliente
+        if len(filtro) > 1:
+            filtro = filtro[filtro['Tipo_Cliente'] == tipo_cliente]
+
+        if not filtro.empty:
+            estado = filtro['Estatus'].values[0]
+            logro = filtro['Descripción_Logro'].values[0]
+        else:
+            # Esto le dirá exactamente qué falta en el Excel
+            estado = "ERROR"
+            logro = f"DEBUG: No hallado -> Materia: {row['Categoria']} | Nivel: {nota_valor} | Cliente: {tipo_cliente}"
 
         # Celda de Título de Competencia (SIN FECHAS, SIN S/F)
         pdf.set_font(estilo["font"], 'B', 11)
@@ -355,34 +378,44 @@ if password in llaves_acceso:
                 
                 # Niveles entrenamiento LÓGICA DE STICKERS MOTIVACIONALES CÁLCULO DE PROMEDIO PARA RECOMPENSA 
                 if promedio >= 4.2: 
-                    color_bg = "#cf8c0e" # Dorado intenso
-                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/TrofeoA.png"
+                    color_bg = "#140744" # Morado Negro
+                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Howl_Castillo_Vagabundo_2A.png"
                     
-                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} display: flex; justify-content: center; align-items: center;">
-                        <img src="{url_img}" style="height: 105%; width: auto;filter: drop-shadow(0px 0px 25px #b5f5f7) drop-shadow(0px 0px 25px #b5f5f7) contrast(1.2);
-                        /* Efecto de Aura de Energía para Entrenamiento */"></div>""",unsafe_allow_html=True)
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} {margin_ajuste} display: flex; justify-content: center; align-items: center;">
+                        <img src="{url_img}" style="height: 150%; width: auto;filter: drop-shadow(0px 0px 10px #7ea8fc) drop-shadow(0px 0px 10px #7ea8fc); 
+                        /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
                     st.info("Bien hecho 🎓📚")
                     st.toast("¡Vamos bien!", icon="🏆")
              
                 elif promedio >= 3.5:
-                    color_bg = "#97c5fa" # Azul cielo claro
-                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/TrofeoB.png"
+                    color_bg = "#140744" # Morado Negro
+                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Howl_Castillo_Vagabundo_2B.png"
                     
-                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} display: flex; justify-content: center; align-items: center;">
-                        <img src="{url_img}" style="height: 105%; width: auto;filter: drop-shadow(0px 0px 25px #b5f5f7) drop-shadow(0px 0px 25px #b5f5f7) contrast(1.2);
-                        /* Efecto de Aura de Energía para Entrenamiento */"></div>""",unsafe_allow_html=True)
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} {margin_ajuste} display: flex; justify-content: center; align-items: center;">
+                        <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d6e629) drop-shadow(0px 0px 10px #d6e629); 
+                        /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
                     st.info("Buen progreso. ¡Hay que ajustar detalles...! 📜🖋️")
                     st.toast(" Vamos mejorando", icon="👍")
 
-                else:
-                    color_bg = "#e8f4f8" # Azul académico sobrio
-                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/TrofeoC.png"
+                elif promedio >= 3.0:
+                    color_bg = "#140744" # Morado Negro
+                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Howl_Castillo_Vagabundo_2C.png"
                     
-                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} display: flex; justify-content: center; align-items: center;">
-                        <img src="{url_img}" style="height: 95%; width: auto;filter: drop-shadow(0px 0px 5px #c6f7f7) drop-shadow(0px 0px 35px #c6f7f7) contrast(1.2);
-                        /* Efecto de Aura de Energía para Entrenamiento */"></div>""",unsafe_allow_html=True)
-                    st.info("Hay que acelerar... 🔍📚")
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} {margin_ajuste} display: flex; justify-content: center; align-items: center;">
+                        <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #e6a029) drop-shadow(0px 0px 10px #e6a029); 
+                        /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
+                    st.info("Hay que acelerar un poco mas... 🔍📚")
                     st.toast("¡A ponernos las pilas!", icon="🔋")
+
+                else:
+                    color_bg = "#140744" # Morado Negro
+                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Howl_Castillo_Vagabundo_2C.png"
+                    
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} {margin_ajuste} display: flex; justify-content: center; align-items: center;">
+                        <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d12f0f) drop-shadow(0px 0px 10px #d12f0f; 
+                        /* Doble filtro para dar grosor al contorno dorado */"></div>""",unsafe_allow_html=True)
+                    st.info("Hay que acelerar mucho... 🔍🔍📚📚")
+                    st.toast("¡Estamos graves!", icon="🔋")
 
 
             else:
@@ -428,20 +461,20 @@ if password in llaves_acceso:
                 st.error(f"Asegúrese de que el nombre coincide con la columna: {e}")
 
             # 1. Lea el archivo (solo una vez)
-            try:
-                NAME = "CLASES_FEB_MAR_2026.pdf"
-                with open(NAME, "rb") as f:
-                    datos_pdf = f.read()
+            #try:
+              #  NAME = "CLASES_FEB_MAR_2026.pdf"
+              #  with open(NAME, "rb") as f:
+                   # datos_pdf = f.read()
 
             # 2. Cree el botón de descarga
-                st.download_button(
-                    label="📄"+NAME,
-                    data=datos_pdf,
-                    file_name=NAME,
-                    mime="application/pdf"
-                    )
-            except FileNotFoundError:
-                st.warning("Suba el PDF al repositorio para habilitar la descarga.")        
+               # st.download_button(
+                   # label="📄"+NAME,
+                   # data=datos_pdf,
+                   # file_name=NAME,
+                   # mime="application/pdf"
+                #    )
+           # except FileNotFoundError:
+               # st.warning("Suba el PDF al repositorio para habilitar la descarga.")        
 
     except Exception as e:
         st.error(f"Falla técnica en la lectura de la pestaña '{pestaña_autorizada}': {e}")
