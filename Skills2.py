@@ -103,7 +103,14 @@ def generar_reporte_maestro(nombre_estudiante, tipo_cliente, df_notas, df_glosar
     pdf.ln(4)
 
     # A. IMAGEN DEL MAGUITO (Pequeña)
-    url_mago = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MagusOne.png"
+    # 1. Definición de rutas según el tipo de cliente
+    magos = {
+        "Colegio": "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/MagusOne.png",
+        "Universidad": "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Magus_Howl.png"
+    }
+    # 2. Selección de la URL (si no existe el tipo, usa MagusOne por defecto)
+    url_mago = magos.get(tipo_cliente, magos["Colegio"])
+    # 3. DIBUJO DE FONDO Y AVATAR
     try:
         pdf.image(url_mago, x=10, y=pdf.get_y(), w=15) # w=15 la hace bien pequeña
     except:
