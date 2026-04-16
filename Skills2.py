@@ -236,7 +236,7 @@ if password in llaves_acceso:
             # ESTILO BASE LIMPIO (Solo lo estructural)
             #estilo_base = "display: flex; justify-content: center; align-items: center; margin: auto; padding: 20px; box-shadow: 0px 10px 20px rgba(0,0,0,0.3); overflow: hidden;"
             estilo_ajustado = f"display: flex; justify-content: center; align-items: center; margin: -50px 0px 10px 40px; padding: 20px; box-shadow: 0px 10px 20px rgba(0,0,0,0.3); overflow: hidden;"
-            margin_ajuste = "margin: -70px 0px 10px 80px;" # Subir 60px y mover 50px a la derecha
+            margin_ajuste = "margin: -70px 0px 10px 100px;" # Subir 60px y mover 50px a la derecha
             # Selección de imagen por Categoría y Desempeño
             if estudiante in colegio:
                 tipo_actual = "Colegio"
@@ -358,15 +358,19 @@ if password in llaves_acceso:
                     color_bg = "#cf8c0e" # Dorado intenso
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/TrofeoA.png"
                     
-                    st.markdown(f'<div style="background-color: {color_bg}; {forma_box}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
-                    st.success("Bien hecho 🎓📚")
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} display: flex; justify-content: center; align-items: center;">
+                        <img src="{url_img}" style="height: 105%; width: auto;filter: drop-shadow(0px 0px 25px #b5f5f7) drop-shadow(0px 0px 25px #b5f5f7) contrast(1.2);
+                        /* Efecto de Aura de Energía para Entrenamiento */"></div>""",unsafe_allow_html=True)
+                    st.info("Bien hecho 🎓📚")
                     st.toast("¡Vamos bien!", icon="🏆")
              
                 elif promedio >= 3.5:
                     color_bg = "#97c5fa" # Azul cielo claro
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/TrofeoB.png"
                     
-                    st.markdown(f'<div style="background-color: {color_bg}; {forma_box}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} display: flex; justify-content: center; align-items: center;">
+                        <img src="{url_img}" style="height: 105%; width: auto;filter: drop-shadow(0px 0px 25px #b5f5f7) drop-shadow(0px 0px 25px #b5f5f7) contrast(1.2);
+                        /* Efecto de Aura de Energía para Entrenamiento */"></div>""",unsafe_allow_html=True)
                     st.info("Buen progreso. ¡Hay que ajustar detalles...! 📜🖋️")
                     st.toast(" Vamos mejorando", icon="👍")
 
@@ -374,8 +378,10 @@ if password in llaves_acceso:
                     color_bg = "#e8f4f8" # Azul académico sobrio
                     url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/TrofeoC.png"
                     
-                    st.markdown(f'<div style="background-color: {color_bg}; {forma_box}"><img src="{url_img}" style="width: 100%;"></div>', unsafe_allow_html=True)
-                    st.warning("Hay que acelerar... 🔍📚")
+                    st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} display: flex; justify-content: center; align-items: center;">
+                        <img src="{url_img}" style="height: 95%; width: auto;filter: drop-shadow(0px 0px 5px #c6f7f7) drop-shadow(0px 0px 35px #c6f7f7) contrast(1.2);
+                        /* Efecto de Aura de Energía para Entrenamiento */"></div>""",unsafe_allow_html=True)
+                    st.info("Hay que acelerar... 🔍📚")
                     st.toast("¡A ponernos las pilas!", icon="🔋")
 
 
