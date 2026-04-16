@@ -51,7 +51,7 @@ def generar_reporte_maestro(nombre_estudiante, tipo_cliente, df_notas, df_glosar
         nota_valor = int(row[nombre_estudiante])
         
         # Búsqueda en Glosario
-        filtro = df_glosario[(df_glosario['Categoría'] == row['Categoria']) & 
+        filtro = df_glosario[(df_glosario['Categoria'] == row['Categoria']) & 
                              (df_glosario['Tipo_Cliente'] == tipo_cliente) & 
                              (df_glosario['Nivel'] == nota_valor)]
         
