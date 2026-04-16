@@ -416,7 +416,7 @@ if password in llaves_acceso:
 
                 else:
                     color_bg = "#140744" # Morado Negro
-                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Howl_Castillo_Vagabundo_2C.png"
+                    url_img = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Howl_Castillo_Vagabundo_1C.png"
                     
                     st.markdown(f"""<div style="background-color: {color_bg}; {estilo_ajustado} {forma_box} {margin_ajuste} display: flex; justify-content: center; align-items: center;">
                         <img src="{url_img}" style="height: 80%; width: auto;filter: drop-shadow(0px 0px 10px #d12f0f) drop-shadow(0px 0px 10px #d12f0f; 
