@@ -465,23 +465,23 @@ if password in llaves_acceso:
                 st.download_button(label=f"📥 Descargar Reporte de Nivel: {estudiante}",data=pdf_bytes,file_name=f"Reporte_{estudiante}_Marzo.pdf",
                 mime="application/pdf")
             except Exception as e:
-                st.error(f"Asegúrese de que el nombre coincide con la columna: {e}")
+                    st.error(f"Asegúrese de que el nombre coincide con la columna: {e}")
 
             # 1. Lea el archivo (solo una vez)
-            #try:
-              #  NAME = "CLASES_FEB_MAR_2026.pdf"
-              #  with open(NAME, "rb") as f:
-                   # datos_pdf = f.read()
+            try:
+                NAME = "CLASES_FEB_MAR_2026.pdf"
+                with open(NAME, "rb") as f:
+                    datos_pdf = f.read()
 
-            # 2. Cree el botón de descarga
-               # st.download_button(
-                   # label="📄"+NAME,
-                   # data=datos_pdf,
-                   # file_name=NAME,
-                   # mime="application/pdf"
-                #    )
-           # except FileNotFoundError:
-               # st.warning("Suba el PDF al repositorio para habilitar la descarga.")        
+            #2. Cree el botón de descarga
+                st.download_button(
+                    label="📄"+NAME,
+                    data=datos_pdf,
+                    file_name=NAME,
+                    mime="application/pdf"
+                    )
+            except FileNotFoundError:
+                st.warning("Suba el PDF al repositorio para habilitar la descarga.")        
 
     except Exception as e:
         st.error(f"Falla técnica en la lectura de la pestaña '{pestaña_autorizada}': {e}")
