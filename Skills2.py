@@ -468,6 +468,7 @@ if password in llaves_acceso:
                     st.error(f"Asegúrese de que el nombre coincide con la columna: {e}")
 
             # 1. Lea el archivo (solo una vez)
+        if tipo_actual == "Colegio":    
             try:
                 NAME = "CLASES_FEB_MAR_2026.pdf"
                 with open(NAME, "rb") as f:
