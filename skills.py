@@ -10,6 +10,16 @@ def hex_to_rgb(hex_color):
     hex_color = hex_color.lstrip('#')
     return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
 
+DIAGNOSTICOS_COLLEGE = [
+    ("📐 Diagnóstico 1 · Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdHkqBz2gI8IbcdqKL2h9eDHOmbgotVtCjsT8Hv3scRwvpRhw/viewform?usp=preview"),
+]
+
+def panel_diagnosticos():
+    st.subheader("📝 Diagnósticos / Diagnostics")
+    cols = st.columns(len(DIAGNOSTICOS_COLLEGE))
+    for col, (titulo, url) in zip(cols, DIAGNOSTICOS_COLLEGE):
+        col.link_button(titulo, url, use_container_width=True)
+
 # Generación de PDF con su lógica original
 def generar_reporte_maestro(nombre_estudiante, tipo_cliente, df_notas, df_glosario):
     # 1. INICIALIZACIÓN
@@ -149,6 +159,8 @@ def mostrar_college(df, df_glosario):
     values_me = [float(fila_me.iloc[0][c]) for c in categorias] if not fila_me.empty else [4.0] * len(categorias)
     df_est = df[df["Estudiante"] != "ME"]
     if df_est.empty:
+        st.title("📈 Reporte: Matemáticas College")
+        panel_diagnosticos()
         st.warning("Aún no hay registros de estudiantes en esta pestaña.")
         return
     st.title("📈 Reporte: Matemáticas College")
