@@ -24,7 +24,7 @@ llaves_acceso = {
 }
 
 # clave -> nombre del estudiante en MAYÚSCULAS, igual que como llega del Form (el motor lo pasa a mayúsculas)
-ESTUDIANTES_COLLEGE = {"College2026": "ALEXANDER MANCHESTER"}      # ⚠️ nombre real
+ESTUDIANTES_COLLEGE = {"College2026": "PRUEBA UNO"}      # ⚠️ nombre real
 
 # (título del botón, enlace PRELLENADO del Form con NOMBRE_AQUI en el campo del nombre)
 DIAGNOSTICOS_COLLEGE = [
