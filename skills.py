@@ -29,7 +29,7 @@ ESTUDIANTES_COLLEGE = {"College2026": "ALEXANDER MANCHESTER"}      # ⚠️ nomb
 # (título del botón, enlace PRELLENADO del Form con NOMBRE_AQUI en el campo del nombre)
 DIAGNOSTICOS_COLLEGE = [
     ("📐 Diagnóstico 1 · Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdHkqBz2gI8IbcdqKL2h9eDHOmbgotVtCjsT8Hv3scRwvpRhw/viewform?usp=pp_url&entry.359099417=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
-    ("📐 Diagnóstico 2 · Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdGVx0FiCD40TIsOHnqj9Tj10RdzH6E8rGP5hDvSab_PpNWBA/viewform?usp=pp_url&entry.956039767=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
+    ("📐 Diagnóstico 2 · Non Linear Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdGVx0FiCD40TIsOHnqj9Tj10RdzH6E8rGP5hDvSab_PpNWBA/viewform?usp=pp_url&entry.956039767=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
 
 ]
 
