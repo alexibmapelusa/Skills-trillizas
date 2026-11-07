@@ -11,7 +11,7 @@ from urllib.parse import quote
 # ⚠️ Los tres valores marcados con ⚠️ hay que ponerlos antes de subir el archivo.
 
 sheet_id = "1d6wWm4k2nFK48OSa8P9-LZ_SnrE6TrzR4eYQtKqpiYo"   # libro de siempre (público por enlace)
-SHEET_COLLEGE = "1DMulgmqCyjeSZVA521atqPu91R-49d-l04UJiLeclP0"          # ⚠️ ID del libro Resultados_Competencias_College
+SHEET_COLLEGE = "1DMulgmqCyjeSZVA521atqPu91R-49d-l04UJiLeclP0"         # ⚠️ ID del libro Resultados_Competencias_College
 
 # La 'llave' es lo que el estudiante escribe, la 'pestaña' es el nombre real en el Excel
 llaves_acceso = {
@@ -24,11 +24,13 @@ llaves_acceso = {
 }
 
 # clave -> nombre del estudiante en MAYÚSCULAS, igual que como llega del Form (el motor lo pasa a mayúsculas)
-ESTUDIANTES_COLLEGE = {"College2026": "PRUEBA UNO"}      # ⚠️ nombre real
+ESTUDIANTES_COLLEGE = {"College2026": "ALEXANDER MANCHESTER"}      # ⚠️ nombre real
 
 # (título del botón, enlace PRELLENADO del Form con NOMBRE_AQUI en el campo del nombre)
 DIAGNOSTICOS_COLLEGE = [
     ("📐 Diagnóstico 1 · Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdHkqBz2gI8IbcdqKL2h9eDHOmbgotVtCjsT8Hv3scRwvpRhw/viewform?usp=pp_url&entry.359099417=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
+    ("📐 Diagnóstico 2 · Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdGVx0FiCD40TIsOHnqj9Tj10RdzH6E8rGP5hDvSab_PpNWBA/viewform?usp=pp_url&entry.956039767=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
+
 ]
 
 st.set_page_config(page_title="Sistema de Mentoría - Alexander Barraza", layout="wide")
@@ -203,7 +205,7 @@ def mostrar_college(df, df_glosario, solo=None):
         ax.set_yticks([1, 2, 3, 4, 5])
         ax.set_yticklabels(["20%", "40%", "60%", "80%", "100%"], color="black", size=9)
         ax.set_xticks(angulos[:-1])
-        ax.set_xticklabels(categorias, fontsize=8, fontweight='bold')
+        ax.set_xticklabels(categorias, fontsize=8, fontweight='bold', color='#e6f1ff')
         ax.grid(True, linestyle='--', alpha=0.6)
         ax.legend(loc='lower left', bbox_to_anchor=(-0.3, -0.1), fontsize=9, frameon=True)
         st.pyplot(fig, transparent=True)
@@ -503,19 +505,5 @@ else:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# f:\Disco Actual\6.Programacion\MiniJarviz
+# cd "f:\Disco Actual\6.Programacion\MiniJarviz"
 # streamlit run skills.py
