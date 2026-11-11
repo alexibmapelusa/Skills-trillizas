@@ -30,7 +30,7 @@ ESTUDIANTES_COLLEGE = {"College2026": "ALEXANDER MANCHESTER"}      # ⚠️ nomb
 DIAGNOSTICOS_COLLEGE = [
     ("📐 Diagnóstico 1 · Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdHkqBz2gI8IbcdqKL2h9eDHOmbgotVtCjsT8Hv3scRwvpRhw/viewform?usp=pp_url&entry.359099417=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     ("📐 Diagnóstico 2 · Non Linear Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdGVx0FiCD40TIsOHnqj9Tj10RdzH6E8rGP5hDvSab_PpNWBA/viewform?usp=pp_url&entry.956039767=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
-
+    ("📐 Diagnóstico 3 · Function Foundations & Logarithms", "https://docs.google.com/forms/d/e/1FAIpQLScWHtRpZtXAwPz4FyOJe4aUJGaKIIrTFrP0CJlUR7ElhMFDUg/viewform?usp=pp_url&entry.702670253=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
 ]
 
 st.set_page_config(page_title="Sistema de Mentoría - Alexander Barraza", layout="wide")
