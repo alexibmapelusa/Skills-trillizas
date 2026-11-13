@@ -143,13 +143,14 @@ def generar_reporte_maestro(nombre_estudiante, tipo_cliente, df_notas, df_glosar
 # ============================== COLLEGE ==============================
 @st.cache_data(ttl=60)
 def leer_libro_college(id_libro):
-    """Lee el libro privado de College con la cuenta de servicio guardada en st.secrets."""
+    """Lee el libro privado de College con la cuenta de servicio guardada en st.secrets.
+    Devuelve {nombre de pestaña de cada diagnóstico: tabla} y la tabla del glosario."""
     gc = gspread.service_account_from_dict(dict(st.secrets["gcp_service_account"]))
     libro = gc.open_by_key(id_libro)
-    df = pd.DataFrame(libro.worksheet("Diagnostico_College").get_all_records())
+    diagnosticos = {h.title: pd.DataFrame(h.get_all_records())
+                    for h in libro.worksheets() if h.title.startswith("IND_SEN_")}
     df_gl = pd.DataFrame(libro.worksheet("Glosario_Competencias").get_all_records())
-    return df, df_gl
-
+    return diagnosticos, df_gl
 
 def panel_diagnosticos(estudiante=None):
     st.subheader("📝 Diagnósticos / Diagnostics")
@@ -480,8 +481,12 @@ if password in llaves_acceso:
     # --- College: libro privado, leído con la cuenta de servicio ---
     if pestaña_autorizada == "Diagnostico_College":
         try:
-            df_c, df_gl = leer_libro_college(SHEET_COLLEGE)
-            mostrar_college(df_c, df_gl, ESTUDIANTES_COLLEGE.get(password))
+            diagnosticos, df_gl = leer_libro_college(SHEET_COLLEGE)
+            if not diagnosticos:
+                st.warning("Aún no hay diagnósticos publicados.")
+            else:
+                elegido = st.selectbox("Diagnóstico:", sorted(diagnosticos))
+                mostrar_college(diagnosticos[elegido], df_gl, ESTUDIANTES_COLLEGE.get(password))
         except Exception as e:
             st.error(f"No se pudo leer el libro de College: {e}")
         st.stop()
