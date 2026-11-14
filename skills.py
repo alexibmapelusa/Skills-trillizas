@@ -167,7 +167,7 @@ def mostrar_college(df, df_glosario, solo=None):
     meta = ["Estudiante", "Fecha_Respuesta", "Test", "Promedio"]
     categorias = [c for c in df.columns if c not in meta]
     fila_me = df[df["Estudiante"] == "ME"]
-    values_me = [float(fila_me.iloc[0][c]) for c in categorias] if not fila_me.empty else [4.0] * len(categorias)
+    values_me = [float(fila_me.iloc[0][c]) for c in categorias] if not fila_me.empty else [4.5] * len(categorias)
     df_est = df[df["Estudiante"] != "ME"]
     if solo:
         df_est = df_est[df_est["Estudiante"] == solo]
