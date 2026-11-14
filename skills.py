@@ -227,7 +227,7 @@ def mostrar_college(df, df_glosario, solo=None):
             (0.0, "D_Huevo_0_84df8a6f-0663-4fdc-a028-f6db1d3fb364-removebg-preview", "#851802", "70%", "Hay que acelerar muchísimo... 🔍📚📚"),       
         ]
         _, suf, brillo, alto, msg = next(n for n in niveles_img if promedio >= n[0])
-        estilo = "display: flex; justify-content: center; align-items: center; margin: -60px 0px 10px 20px; padding: 20px; box-shadow: 0px 10px 20px rgba(0,0,0,0.3); overflow: hidden;"
+        estilo = "display: flex; justify-content: center; align-items: center; margin: -60px 0px 10px 30px; padding: 20px; box-shadow: 0px 10px 20px rgba(0,0,0,0.3); overflow: hidden;"
         forma = "width: 220px; height: 220px; border-radius: 15px; margin: 0px;"
         st.markdown(f"""<div style="background-color: #0e1336; {estilo} {forma}"><img src="{base}{suf}.png" style="height: {alto}; width: auto; filter: drop-shadow(0px 0px 10px {brillo}) drop-shadow(0px 0px 10px {brillo});"></div>""", unsafe_allow_html=True)
         st.info(msg)
