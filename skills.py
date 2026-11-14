@@ -185,7 +185,7 @@ def mostrar_college(df, df_glosario, solo=None):
     estudiante = solo if solo else st.selectbox("Seleccione el Perfil para visualizar:", sorted(df_est["Estudiante"].unique()))
     regs = df_est[df_est["Estudiante"] == estudiante].reset_index(drop=True)
     etiquetas = [f"{r.Fecha_Respuesta} - {r.Test}" for r in regs.itertuples()]
-    idx = st.selectbox("Ultimo Registro:", range(len(regs)), index=len(regs) - 1, format_func=lambda i: etiquetas[i])
+    idx = st.selectbox("Ultimo Registro Test:", range(len(regs)), index=len(regs) - 1, format_func=lambda i: etiquetas[i])
     fila = regs.iloc[idx]
     valores = [float(fila[c]) for c in categorias]
     promedio = float(np.mean(valores))
@@ -217,12 +217,13 @@ def mostrar_college(df, df_glosario, solo=None):
         st.write("---")
 
         # ===== AVATAR: cambia según el PROMEDIO del registro (umbral, imagen, brillo, alto, mensaje) =====
-        base = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Howl_Castillo_Vagabundo_"
+        base = "https://raw.githubusercontent.com/alexibmapelusa/Skills-trillizas/main/images/Jurasico_College_"
         niveles_img = [
-            (4.2, "2A", "#7ea8fc", "150%", "Bien hecho 🎓📚"),
-            (3.5, "2B", "#d6e629", "80%", "Buen progreso. ¡Hay que ajustar detalles...! 📜🖋️"),
-            (3.0, "2C", "#e6a029", "80%", "Hay que acelerar un poco más... 🔍📚"),
-            (0.0, "1C", "#d12f0f", "80%", "Hay que acelerar mucho... 🔍🔍📚📚"),
+            (4.2, "A_Adulto_1_d1c99858-a0fc-4cf9-8054-aa30ad3cae65-removebg-preview", "#7ea8fc", "150%", "Bien hecho 🎓📚"),
+            (3.5, "B_Juvenil_1_07b7da26-06b1-4979-b367-ebf2d06efd9b-removebg-preview", "#d6e629", "80%", "Buen progreso. ¡Hay que ajustar detalles...! 📜🖋️"),
+            (3.0, "Cup_Cria_1_a11aa55e-889d-4af8-91b3-5f61a6684ef0-removebg-preview", "#e6a029", "80%", "Hay que acelerar un poco más... 🔍📚"),
+            (2.0, "C_Cria_0_Cascaron_1_6ef1f87a-5b8f-42e6-80fe-98cd3b2d485c-removebg-preview", "#d12f0f", "80%", "Hay que acelerar mucho... 🔍🔍📚📚"),
+            (0.0, "D_Huevo_0_84df8a6f-0663-4fdc-a028-f6db1d3fb364-removebg-preview", "#d12f0f", "80%", "Hay que acelerar mucho... 🔍🔍📚📚"),
         ]
         _, suf, brillo, alto, msg = next(n for n in niveles_img if promedio >= n[0])
         estilo = "display: flex; justify-content: center; align-items: center; margin: -50px 0px 10px 40px; padding: 20px; box-shadow: 0px 10px 20px rgba(0,0,0,0.3); overflow: hidden;"
