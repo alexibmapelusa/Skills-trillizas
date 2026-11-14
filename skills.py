@@ -27,12 +27,13 @@ llaves_acceso = {
 ESTUDIANTES_COLLEGE = {"College2026": "ALEXANDER MANCHESTER"}      # ⚠️ nombre real
 
 # (título del botón, enlace PRELLENADO del Form con NOMBRE_AQUI en el campo del nombre)
-# cambiar nombre DIAGNOSTICOS_COLLEGE por MATH_COLLEGE 
+# cambiar nombre DIAGNOSTICOS_COLLEGE por MATH_COLLEGE  
 DIAGNOSTICOS_COLLEGE = [
     #("📐 Diagnóstico 1 · Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdHkqBz2gI8IbcdqKL2h9eDHOmbgotVtCjsT8Hv3scRwvpRhw/viewform?usp=pp_url&entry.359099417=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     #("📐 Diagnóstico 2 · Non Linear Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdGVx0FiCD40TIsOHnqj9Tj10RdzH6E8rGP5hDvSab_PpNWBA/viewform?usp=pp_url&entry.956039767=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     #("📐 Diagnóstico 3 · Function Foundations & Logarithms", "https://docs.google.com/forms/d/e/1FAIpQLScWHtRpZtXAwPz4FyOJe4aUJGaKIIrTFrP0CJlUR7ElhMFDUg/viewform?usp=pp_url&entry.702670253=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     ("🧠 Auto-Diagnóstico 1 ·", "https://docs.google.com/forms/d/e/1FAIpQLSf3-PzmfdPdyp4ZT0wGUoy2VEjM7uszJmyDnTsItj2gczO7eA/viewform?usp=pp_url&entry.2022576095=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
+    ("🔍 Seguimiento 1 ·", "https://docs.google.com/forms/d/e/1FAIpQLSe0Q4Ayc9DuTJEigp5uBJLyiKbmRPiORPt4c4p1jeOXlN_5-g/viewform?usp=pp_url&entry.56569486=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
 ]
 
 st.set_page_config(page_title="Sistema de Mentoría - Alexander Barraza", layout="wide")
