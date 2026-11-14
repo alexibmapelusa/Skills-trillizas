@@ -185,7 +185,7 @@ def mostrar_college(df, df_glosario, solo=None):
     estudiante = solo if solo else st.selectbox("Seleccione el Perfil para visualizar:", sorted(df_est["Estudiante"].unique()))
     regs = df_est[df_est["Estudiante"] == estudiante].reset_index(drop=True)
     etiquetas = [f"{r.Fecha_Respuesta} - {r.Test}" for r in regs.itertuples()]
-    idx = st.selectbox("Registro:", range(len(regs)), index=len(regs) - 1, format_func=lambda i: etiquetas[i])
+    idx = st.selectbox("Ultimo Registro:", range(len(regs)), index=len(regs) - 1, format_func=lambda i: etiquetas[i])
     fila = regs.iloc[idx]
     valores = [float(fila[c]) for c in categorias]
     promedio = float(np.mean(valores))
