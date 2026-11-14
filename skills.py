@@ -167,7 +167,7 @@ def mostrar_college(df, df_glosario, solo=None):
     meta = ["Estudiante", "Fecha_Respuesta", "Test", "Promedio"]
     categorias = [c for c in df.columns if c not in meta]
     fila_me = df[df["Estudiante"] == "ME"]
-    values_me = [float(fila_me.iloc[0][c]) for c in categorias] if not fila_me.empty else [6.0] * len(categorias)
+    values_me = [float(fila_me.iloc[0][c]) for c in categorias] if not fila_me.empty else [4.0] * len(categorias)
     df_est = df[df["Estudiante"] != "ME"]
     if solo:
         df_est = df_est[df_est["Estudiante"] == solo]
@@ -236,7 +236,7 @@ def mostrar_college(df, df_glosario, solo=None):
         df_tabla = pd.DataFrame({"Categoria": categorias, estudiante: [int(v) for v in valores]})
 
         def semaforo(val):
-            color = "#5ce1e6" if val >= 4.7 else "#6ee798" if val >= 4.1 else "#fde068" if val >=3.5 else "#fb7185"
+            color = "#5ce1e6" if val >= 5.0 else "#6ee798" if val >= 4.5 else "#fde068" if val >=3.7 else "#fb7185"
             return f'font-family: Helvetica; color: #ffffff; background-color: {color};'
 
         def cat_estilo(val):
