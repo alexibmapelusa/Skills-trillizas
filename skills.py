@@ -236,7 +236,7 @@ def mostrar_college(df, df_glosario, solo=None):
         df_tabla = pd.DataFrame({"Categoria": categorias, estudiante: [int(v) for v in valores]})
 
         def semaforo(val):
-            color = "#9ee69e" if val >= 4.1 else "#cee3a6" if val >= 3.7 else "#dddf73" if val >=3.0 else "#ee4d2d"
+            color = "#5ce1e6" if val >= 4.1 else "#6ee798" if val >= 3.7 else "#fde068" if val >=3.0 else "#fb7185"
             return f'font-family: Helvetica; color: #ffffff; background-color: {color};'
 
         def cat_estilo(val):
