@@ -222,9 +222,9 @@ def mostrar_college(df, df_glosario, solo=None):
             (4.6, "A_Adulto_1_d1c99858-a0fc-4cf9-8054-aa30ad3cae65-removebg-preview", "#7ea8fc", "150%", "Bien hecho 🎓📜"),
             (4.1, "B_Juvenil_1_07b7da26-06b1-4979-b367-ebf2d06efd9b-removebg-preview", "#29e68e", "110%", "Buen progreso 🖋️📚"),
             (3.7, "Cup_Cria_1_a11aa55e-889d-4af8-91b3-5f61a6684ef0-removebg-preview", "#4fe629", "95%", "¡Hay que ajustar detalles 🔍📚"),
-            (3.0, "C_Cria_0_Cascaron_1_6ef1f87a-5b8f-42e6-80fe-98cd3b2d485c-removebg-preview", "#d1c40f", "85%", "...Tenemos que acelerar un poco más... 🔍📚"),
-            (1.0, "D_Huevo_0_84df8a6f-0663-4fdc-a028-f6db1d3fb364-removebg-preview", "#d12f0f", "75%", "Hay que acelerar mucho... 🔍📚🔍"),
-            (0.0, "D_Huevo_0_84df8a6f-0663-4fdc-a028-f6db1d3fb364-removebg-preview", "#ac2307", "70%", "Hay que acelerar muchísimo... 🔍📚🔍📚"),       
+            (3.0, "C_Cria_0_Cascaron_1_6ef1f87a-5b8f-42e6-80fe-98cd3b2d485c-removebg-preview", "#d1c40f", "85%", "...Tenemos que acelerar un poco más... 🔍📚📚"),
+            (1.0, "D_Huevo_0_84df8a6f-0663-4fdc-a028-f6db1d3fb364-removebg-preview", "#d12f0f", "75%", "Hay que acelerar mucho... 🔍📚📚"),
+            (0.0, "D_Huevo_0_84df8a6f-0663-4fdc-a028-f6db1d3fb364-removebg-preview", "#851802", "70%", "Hay que acelerar muchísimo... 🔍📚📚"),       
         ]
         _, suf, brillo, alto, msg = next(n for n in niveles_img if promedio >= n[0])
         estilo = "display: flex; justify-content: center; align-items: center; margin: -50px 0px 10px 40px; padding: 20px; box-shadow: 0px 10px 20px rgba(0,0,0,0.3); overflow: hidden;"
@@ -236,7 +236,7 @@ def mostrar_college(df, df_glosario, solo=None):
         df_tabla = pd.DataFrame({"Categoria": categorias, estudiante: [int(v) for v in valores]})
 
         def semaforo(val):
-            color = '#1f6f5c' if val >= 4 else '#8a6d1d' if val >= 3 else '#8c2f39'
+            color = "#06B993" if val >= 4.1 else "#1faa70" if val >= 3.7 else "#b2b419" if val >=3.0 else "#af2e14"
             return f'font-family: Helvetica; color: #ffffff; background-color: {color};'
 
         def cat_estilo(val):
