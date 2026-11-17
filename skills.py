@@ -36,6 +36,8 @@ DIAGNOSTICOS_COLLEGE = [
     #("🔍 Seguimiento 1 ·", "https://docs.google.com/forms/d/e/1FAIpQLSeiIJe45L7GoaIKkV5YVwy-H4_rdkeLHTz4Hpju5YMdl5qArA/viewform?usp=pp_url&entry.960804988=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     #("🔍 Seguimiento 2 ·", "https://docs.google.com/forms/d/e/1FAIpQLSe0Q4Ayc9DuTJEigp5uBJLyiKbmRPiORPt4c4p1jeOXlN_5-g/viewform?usp=pp_url&entry.56569486=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     ("🔍 Seguimiento 3 ·", "https://docs.google.com/forms/d/e/1FAIpQLScve5HtBUISoNrnatiyLXUhZKodXjyOp7uUtj2w27tnGJ9MIw/viewform?usp=pp_url&entry.439542111=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
+    ("🔍 Seguimiento 4 ·", "https://docs.google.com/forms/d/e/1FAIpQLSd8lXtdv61kGj_B8XNyLLigcyEe1YBCZ3dwAYgWvZUSmus0KQ/viewform?usp=pp_url&entry.396225349=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
+
 ]
 
 st.set_page_config(page_title="Sistema de Mentoría - Alexander Barraza", layout="wide")
