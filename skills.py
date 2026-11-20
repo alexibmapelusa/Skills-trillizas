@@ -32,12 +32,12 @@ DIAGNOSTICOS_COLLEGE = [
     #("📐 Diagnóstico 1 · Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdHkqBz2gI8IbcdqKL2h9eDHOmbgotVtCjsT8Hv3scRwvpRhw/viewform?usp=pp_url&entry.359099417=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     #("📐 Diagnóstico 2 · Non Linear Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdGVx0FiCD40TIsOHnqj9Tj10RdzH6E8rGP5hDvSab_PpNWBA/viewform?usp=pp_url&entry.956039767=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     #("📐 Diagnóstico 3 · Function Foundations & Logarithms", "https://docs.google.com/forms/d/e/1FAIpQLScWHtRpZtXAwPz4FyOJe4aUJGaKIIrTFrP0CJlUR7ElhMFDUg/viewform?usp=pp_url&entry.702670253=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
-    ("🧠 Auto-Diagnóstico 1 ·", "https://docs.google.com/forms/d/e/1FAIpQLSf3-PzmfdPdyp4ZT0wGUoy2VEjM7uszJmyDnTsItj2gczO7eA/viewform?usp=pp_url&entry.2022576095=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
+    #("🧠 Auto-Diagnóstico 1 ·", "https://docs.google.com/forms/d/e/1FAIpQLSf3-PzmfdPdyp4ZT0wGUoy2VEjM7uszJmyDnTsItj2gczO7eA/viewform?usp=pp_url&entry.2022576095=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     #("🔍 Seguimiento 1 ·", "https://docs.google.com/forms/d/e/1FAIpQLSeiIJe45L7GoaIKkV5YVwy-H4_rdkeLHTz4Hpju5YMdl5qArA/viewform?usp=pp_url&entry.960804988=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     #("🔍 Seguimiento 2 ·", "https://docs.google.com/forms/d/e/1FAIpQLSe0Q4Ayc9DuTJEigp5uBJLyiKbmRPiORPt4c4p1jeOXlN_5-g/viewform?usp=pp_url&entry.56569486=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
-    ("🔍 Seguimiento 3 ·", "https://docs.google.com/forms/d/e/1FAIpQLScve5HtBUISoNrnatiyLXUhZKodXjyOp7uUtj2w27tnGJ9MIw/viewform?usp=pp_url&entry.439542111=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
+    #("🔍 Seguimiento 3 ·", "https://docs.google.com/forms/d/e/1FAIpQLScve5HtBUISoNrnatiyLXUhZKodXjyOp7uUtj2w27tnGJ9MIw/viewform?usp=pp_url&entry.439542111=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     ("🔍 Seguimiento 4 ·", "https://docs.google.com/forms/d/e/1FAIpQLSd8lXtdv61kGj_B8XNyLLigcyEe1YBCZ3dwAYgWvZUSmus0KQ/viewform?usp=pp_url&entry.396225349=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
-
+    ("🔍 Seguimiento 5 ·", "https://docs.google.com/forms/d/e/1FAIpQLSdJIrLrYy045qTWXkvX8XOQ-TKAaOCu71HdY04qKgvWXNJwsg/viewform?usp=pp_url&entry.439542111=ALEXANDER+MANCHESTER"), 
 ]
 
 st.set_page_config(page_title="Sistema de Mentoría - Alexander Barraza", layout="wide")
