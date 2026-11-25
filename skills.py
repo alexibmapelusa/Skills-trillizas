@@ -27,7 +27,7 @@ llaves_acceso = {
 ESTUDIANTES_COLLEGE = {"College2026": "ALEXANDER MANCHESTER"}      # ⚠️ nombre real
 
 # (título del botón, enlace PRELLENADO del Form con NOMBRE_AQUI en el campo del nombre)
-# cambiar nombre DIAGNOSTICOS_COLLEGE por MATH_COLLEGE   
+# cambiar nombre DIAGNOSTICOS_COLLEGE por MATH_COLLEGE    
 DIAGNOSTICOS_COLLEGE = [
     #("📐 Diagnóstico 1 · Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdHkqBz2gI8IbcdqKL2h9eDHOmbgotVtCjsT8Hv3scRwvpRhw/viewform?usp=pp_url&entry.359099417=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     #("📐 Diagnóstico 2 · Non Linear Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdGVx0FiCD40TIsOHnqj9Tj10RdzH6E8rGP5hDvSab_PpNWBA/viewform?usp=pp_url&entry.956039767=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
@@ -39,7 +39,8 @@ DIAGNOSTICOS_COLLEGE = [
     #("🔍 Seguimiento 4 ·", "https://docs.google.com/forms/d/e/1FAIpQLSd8lXtdv61kGj_B8XNyLLigcyEe1YBCZ3dwAYgWvZUSmus0KQ/viewform?usp=pp_url&entry.396225349=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     #("🔍 Seguimiento 5 ·", "https://docs.google.com/forms/d/e/1FAIpQLSdJIrLrYy045qTWXkvX8XOQ-TKAaOCu71HdY04qKgvWXNJwsg/viewform?usp=pp_url&entry.439542111=ALEXANDER+MANCHESTER"), 
     ("🔍 Seguimiento 6 ·", "https://docs.google.com/forms/d/e/1FAIpQLScy0xs5yQo385rKK16H69YYJm_d-LXRFlv_7ZnXR9jYf67_tw/viewform?usp=pp_url&entry.1411199273=ALEXANDER+MANCHESTER"), 
-    #("🔍 Seguimiento 7 ·", "https://docs.google.com/forms/d/e/1FAIpQLScsPoOMxItHmmt_eO7bRfM-fzrdlIikznSIHNsOzKgp0XPaEA/viewform?usp=pp_url&entry.1358430619=ALEXANDER+MANCHESTER"), 
+    ("🔍 Seguimiento 7 ·", "https://docs.google.com/forms/d/e/1FAIpQLScsPoOMxItHmmt_eO7bRfM-fzrdlIikznSIHNsOzKgp0XPaEA/viewform?usp=pp_url&entry.1358430619=ALEXANDER+MANCHESTER"), 
+    #("🔍 Seguimiento 8 ·", "https://docs.google.com/forms/d/e/1FAIpQLSdk2n3q1wHdeVvroXLn_5GrlS1kuQebt12V2HNGe0LNqm18WA/viewform?usp=pp_url&entry.248558677=ALEXANDER+MANCHESTER"), 
 ]
 
 st.set_page_config(page_title="Sistema de Mentoría - Alexander Barraza", layout="wide")
