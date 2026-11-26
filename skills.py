@@ -4,8 +4,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import gspread
 from fpdf import FPDF
-from datetime import datetime
 from urllib.parse import quote
+from datetime import datetime
+
 
 # ============================== CONFIGURACIÓN ==============================
 # ⚠️ Los tres valores marcados con ⚠️ hay que ponerlos antes de subir el archivo.
@@ -13,22 +14,19 @@ from urllib.parse import quote
 sheet_id = "1d6wWm4k2nFK48OSa8P9-LZ_SnrE6TrzR4eYQtKqpiYo"   # libro de siempre (público por enlace)
 SHEET_COLLEGE = "1DMulgmqCyjeSZVA521atqPu91R-49d-l04UJiLeclP0"         # ⚠️ ID del libro Resultados_Competencias_College
 
-# La 'llave' es lo que el estudiante escribe, la 'pestaña' es el nombre real en el Excel
-llaves_acceso = {
-    "Clau2026": "Trillizas",
-    "NourandGimeno2026": "TAF",
-    "Valentin2026": "Mecanica_Fluidos",
-    "Simon2026": "Matematicas_II",
-    "Saiyajines2026": "Gym_Training",
-    "College2026": "Diagnostico_College", #cambiar nombre Diagnostico_College por Math_College
-}
+# Los códigos de acceso NO viven en este archivo: se leen de st.secrets (repositorio público).
+# llaves_acceso: {código de acceso: nombre de la pestaña} del flujo antiguo.
+llaves_acceso = dict(st.secrets["llaves_acceso"])
 
-# clave -> nombre del estudiante en MAYÚSCULAS, igual que como llega del Form (el motor lo pasa a mayúsculas)
-ESTUDIANTES_COLLEGE = {"College2026": "ALEXANDER MANCHESTER"}      # ⚠️ nombre real
+# ESTUDIANTES_COLLEGE: {código de acceso: nombre del estudiante en MAYÚSCULAS,
+# igual que la columna Estudiante del archivo Resultados_Competencias_College}.
+ESTUDIANTES_COLLEGE = dict(st.secrets["estudiantes_college"])
 
-# (título del botón, enlace PRELLENADO del Form con NOMBRE_AQUI en el campo del nombre)
-# cambiar nombre DIAGNOSTICOS_COLLEGE por MATH_COLLEGE    
-DIAGNOSTICOS_COLLEGE = [
+# Todo código de ESTUDIANTES_COLLEGE abre el reporte College.
+llaves_acceso.update({codigo: "Diagnostico_College" for codigo in ESTUDIANTES_COLLEGE})
+
+# (título del botón, enlace PRELLENADO del Form con NOMBRE_AQUI en el campo del nombre)  
+DIAGNOSTICOS_MATH_COLLEGE = [
     #("📐 Diagnóstico 1 · Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdHkqBz2gI8IbcdqKL2h9eDHOmbgotVtCjsT8Hv3scRwvpRhw/viewform?usp=pp_url&entry.359099417=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     #("📐 Diagnóstico 2 · Non Linear Functions & Graphs", "https://docs.google.com/forms/d/e/1FAIpQLSdGVx0FiCD40TIsOHnqj9Tj10RdzH6E8rGP5hDvSab_PpNWBA/viewform?usp=pp_url&entry.956039767=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
     #("📐 Diagnóstico 3 · Function Foundations & Logarithms", "https://docs.google.com/forms/d/e/1FAIpQLScWHtRpZtXAwPz4FyOJe4aUJGaKIIrTFrP0CJlUR7ElhMFDUg/viewform?usp=pp_url&entry.702670253=ALEXANDER+MANCHESTER"),   # ⚠️ enlace del Form
@@ -164,8 +162,8 @@ def leer_libro_college(id_libro):
 
 def panel_diagnosticos(estudiante=None):
     st.subheader("📝 Diagnósticos / Diagnostics")
-    cols = st.columns(len(DIAGNOSTICOS_COLLEGE))
-    for col, (titulo, url) in zip(cols, DIAGNOSTICOS_COLLEGE):
+    cols = st.columns(len(DIAGNOSTICOS_MATH_COLLEGE))
+    for col, (titulo, url) in zip(cols, DIAGNOSTICOS_MATH_COLLEGE):
         if estudiante:
             url = url.replace("NOMBRE_AQUI", quote(estudiante))
         col.link_button(titulo, url, use_container_width=True)
@@ -490,17 +488,22 @@ if password in llaves_acceso:
     st.toast("Reporte actualizado correctamente", icon="✅")
     pestaña_autorizada = llaves_acceso[password]
 
-    # --- College: libro privado, leído con la cuenta de servicio ---
+    # --- College: archivo privado, leído con la cuenta de servicio ---
     if pestaña_autorizada == "Diagnostico_College":
+        nombre_estudiante = ESTUDIANTES_COLLEGE.get(password)
+        # Seguridad: si el código de acceso no tiene estudiante asignado, no se muestra nada.
+        if not nombre_estudiante:
+            st.error("Este código de acceso no tiene un estudiante asignado.")
+            st.stop()
         try:
             diagnosticos, df_gl = leer_libro_college(SHEET_COLLEGE)
             if not diagnosticos:
                 st.warning("Aún no hay diagnósticos publicados.")
             else:
                 elegido = st.selectbox("Diagnóstico:", sorted(diagnosticos))
-                mostrar_college(diagnosticos[elegido], df_gl, ESTUDIANTES_COLLEGE.get(password))
+                mostrar_college(diagnosticos[elegido], df_gl, nombre_estudiante)
         except Exception as e:
-            st.error(f"No se pudo leer el libro de College: {e}")
+            st.error(f"No se pudo leer el archivo de College: {e}")
         st.stop()
 
     # --- Resto de claves: libro público por enlace, como siempre ---
